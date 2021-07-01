@@ -1,77 +1,51 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-container class="middlealign">
+    <h1>{{ $t('general.title') }}</h1>
+    <h3 class="subtitle-app">{{ $t('general.subtitle') }}</h3>
+    <p>
+      The big five personality traits are the best accepted and most commonly
+      used model of personality in academic psychology. If you take a college
+      course in personality psychology, this is what you will learn about. The
+      big five come from the statistical study of responses to personality
+      items. Using a technique called factor analysis researchers can look at
+      the responses of people to hundreds of personality items and ask the
+      question "what is the best was to summarize an individual?". This has been
+      done with many samples from all over the world and the general result is
+      that, while there seem to be unlimited personality variables, five stand
+      out from the pack in terms of explaining a lot of a persons answers to
+      questions about their personality: extraversion, neuroticism,
+      agreeableness, conscientiousness and openness to experience. The big-five
+      are not associated with any particular test, a variety of measures have
+      been developed to measure them. This test uses the Big-Five Factor Markers
+      from the International Personality Item Pool, developed by Goldberg
+      (1992).
+    </p>
+
+    <v-row class="container-main-options">
+      <ul>
+        <li>
+          Scientific Validity: research included factor analysis to identify the
+          5 traits of the OCEAN model.
+        </li>
+        <li>
+          Free: the set of items was developed as a public domain alternative to
+          NEO-PI
+        </li>
+        <li>Translated: available in more languages</li>
+      </ul>
+    </v-row>
+    <v-btn outlined text x-large elevation="2" class="button-style" to="/intro">
+      Take the test
+    </v-btn>
+  </v-container>
 </template>
+
+<script>
+export default {
+  name: 'index',
+}
+</script>
+
+<style>
+</style>
+
