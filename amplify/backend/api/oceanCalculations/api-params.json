@@ -1,0 +1,36 @@
+{
+    "paths": [
+        {
+            "name": "/ocean-calculations",
+            "lambdaFunction": "oceanCalculations",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/ocean-calculations"
+        }
+    ],
+    "resourceName": "oceanCalculations",
+    "apiName": "oceanCalculations",
+    "functionArns": [
+        {
+            "lambdaFunction": "oceanCalculations"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-oceannuxtamplify-dev-214954-authRole",
+        "unAuthRoleName": "amplify-oceannuxtamplify-dev-214954-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "oceanCalculations",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "2efbf2aa"
+}

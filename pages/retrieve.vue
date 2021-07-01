@@ -34,12 +34,7 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        const API =
-          process.env.NODE_ENV === 'production'
-            ? 'https://bigfiveaspectsbackendapi.herokuapp.com'
-            : 'http://localhost:4000'
-        axios
-          .get(`${API}/results/${this.id}`)
+        API.get('oceanCalculations', `/ocean-calculations`)
           .then((response) => {
             this.$store.dispatch('updateResults', response.data)
             setTimeout(() => {

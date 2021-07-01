@@ -60,13 +60,7 @@ export default {
           payload['age'] = this.age
           payload['language'] = this.$i18n.locale
 
-          const API =
-            process.env.NODE_ENV === 'production'
-              ? 'https://bigfiveaspectsapi.herokuapp.com'
-              : 'http://localhost:4000'
-
-          axios
-            .post(`${API}/results`, payload)
+          API.post('oceanCalculations', `/ocean-calculations`, payload)
             .then((response) => {
               this.setId(response.data)
               this.calculateResults()
