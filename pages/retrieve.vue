@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 const ismongoId = (value) => /^[a-f\d]{24}$/i.test(value)
 
 export default {
