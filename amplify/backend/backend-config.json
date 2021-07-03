@@ -3,7 +3,27 @@
     "oceanCalculations": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "oceanCalculationsDb",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "oceanCalculations",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -20,6 +40,22 @@
           ]
         }
       ]
+    }
+  },
+  "storage": {
+    "oceanCalculationsDb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "oceanCalculations": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "service": "S3AndCloudFront",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

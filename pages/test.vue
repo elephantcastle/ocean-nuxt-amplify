@@ -31,6 +31,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { API } from 'aws-amplify'
+// import calculateScores from './../utils/utils/calculations'
 
 export default {
   name: 'test',
@@ -51,16 +52,22 @@ export default {
       if (this.index < 120) {
         this.updateAnswer([this.index, value + 1])
         this.index++
-        if (this.index === 120) {
+        if (this.index === 10) {
           this.processing = true
-          this.calculateResults()
           const payload = {}
-          payload['testdata'] = JSON.parse(JSON.stringify(this.results))
+          payload['id'] = '0'
+          payload['testdata'] = new Array(120).fill(1)
           payload['sex'] = this.sex
           payload['age'] = this.age
           payload['language'] = this.$i18n.locale
+          // const scores = calculateScores(new Array(120).fill(1), 'male', 30)
+          // scores.then((data) => console.log(data))
+          // console.log(scores)
+          console.log(payload)
 
-          API.post('oceanCalculations', `/ocean-calculations`, payload)
+          API.post('oceanCalculations', `/ocean-calculations`, {
+            body: payload,
+          })
             .then((response) => {
               this.setId(response.data.id)
               this.setGraphData(response.data.graphData)

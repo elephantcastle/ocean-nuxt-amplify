@@ -15,6 +15,30 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storageoceanCalculationsDbName": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsDbName"
+    },
+    "storageoceanCalculationsDbArn": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsDbArn"
+    },
+    "storageoceanCalculationsDbStreamArn": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsDbStreamArn"
+    },
+    "storageoceanCalculationsName": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsName"
+    },
+    "storageoceanCalculationsArn": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsArn"
+    },
+    "storageoceanCalculationsStreamArn": {
+      "Type": "String",
+      "Default": "storageoceanCalculationsStreamArn"
     }
   },
   "Conditions": {
@@ -69,6 +93,24 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_OCEANCALCULATIONSDB_NAME": {
+              "Ref": "storageoceanCalculationsDbName"
+            },
+            "STORAGE_OCEANCALCULATIONSDB_ARN": {
+              "Ref": "storageoceanCalculationsDbArn"
+            },
+            "STORAGE_OCEANCALCULATIONSDB_STREAMARN": {
+              "Ref": "storageoceanCalculationsDbStreamArn"
+            },
+            "STORAGE_OCEANCALCULATIONS_NAME": {
+              "Ref": "storageoceanCalculationsName"
+            },
+            "STORAGE_OCEANCALCULATIONS_ARN": {
+              "Ref": "storageoceanCalculationsArn"
+            },
+            "STORAGE_OCEANCALCULATIONS_STREAMARN": {
+              "Ref": "storageoceanCalculationsStreamArn"
             }
           }
         },
@@ -89,12 +131,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "oceannuxtamplifyLambdaRoledc6b38ee",
+            "oceannuxtamplifyLambdaRole16a99c30",
             {
               "Fn::Join": [
                 "",
                 [
-                  "oceannuxtamplifyLambdaRoledc6b38ee",
+                  "oceannuxtamplifyLambdaRole16a99c30",
                   "-",
                   {
                     "Ref": "env"
@@ -160,6 +202,119 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageoceanCalculationsDbArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageoceanCalculationsDbArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageoceanCalculationsDbArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageoceanCalculationsDbArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageoceanCalculationsArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageoceanCalculationsArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }
