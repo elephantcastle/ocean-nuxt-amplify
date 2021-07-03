@@ -31,7 +31,6 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { API } from 'aws-amplify'
-// import calculateScores from './../utils/utils/calculations'
 
 export default {
   name: 'test',
@@ -60,17 +59,14 @@ export default {
           payload['sex'] = this.sex
           payload['age'] = this.age
           payload['language'] = this.$i18n.locale
-          // const scores = calculateScores(new Array(120).fill(1), 'male', 30)
-          // scores.then((data) => console.log(data))
-          // console.log(scores)
-          console.log(payload)
 
           API.post('oceanCalculations', `/ocean-calculations`, {
             body: payload,
           })
             .then((response) => {
-              this.setId(response.data.id)
-              this.setGraphData(response.data.graphData)
+              this.setId(response.id)
+              this.setGraphData(response.graphData)
+              console.log(response)
               this.$router.push({ path: `/results` })
             })
             .catch((e) => {

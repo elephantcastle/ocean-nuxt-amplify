@@ -197,7 +197,7 @@ app.post(path, function (req, res) {
       res.json({ error: err, url: req.url, body: req.body })
     } else {
       const { testdata, sex, age } = req.body
-      utils.calculateScores(testdata, sex, age).then((data) => {
+      utils.calculateScores(testdata, sex, age).then((results) => {
         let tableNameResult = 'testResults'
         if (process.env.ENV && process.env.ENV !== 'NONE') {
           tableNameResult = tableNameResult + '-' + process.env.ENV
@@ -206,7 +206,7 @@ app.post(path, function (req, res) {
           TableName: tableNameResult,
           Item: {
             id: '0',
-            results: data,
+            results: results,
           },
         }
         dynamodb.put(putItemParamsResult, (err, data) => {
@@ -217,7 +217,7 @@ app.post(path, function (req, res) {
             res.json({
               success: 'post call succeed!',
               url: req.url,
-              data: data,
+              graphData: results,
             })
           }
         })

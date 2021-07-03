@@ -15,7 +15,7 @@
       "function": {
         "oceanCalculations": {
           "deploymentBucketName": "amplify-oceannuxtamplify-dev-214954-deployment",
-          "s3Key": "amplify-builds/oceanCalculations-4b503364474541525370-build.zip"
+          "s3Key": "amplify-builds/oceanCalculations-4e2f62316b556452532b-build.zip"
         }
       }
     }
