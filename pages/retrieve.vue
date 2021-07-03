@@ -18,6 +18,7 @@
 
 <script>
 const ismongoId = (value) => /^[a-f\d]{24}$/i.test(value)
+import { API } from 'aws-amplify'
 
 export default {
   name: 'retrieve',

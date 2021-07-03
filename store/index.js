@@ -1,5 +1,3 @@
-// import { getGraphData } from './../utils/utils'
-
 export const state = () => ({
   results: [],
   age: undefined,
@@ -23,8 +21,8 @@ export const mutations = {
   setResults(state, results) {
     state.results = JSON.parse(JSON.stringify(results))
   },
-  calculateResults(state) {
-    // state.graphData = getGraphData(state.results)
+  setGraphData(state, graphData) {
+    state.graphData = graphData
   },
 }
 
@@ -34,7 +32,7 @@ export const actions = {
     commit('setSex', value.sex)
     commit('setId', value._id)
     await commit('setResults', value.testdata)
-    await commit('calculateResults')
+    await commit('setGraphData', value.graphData)
   },
 }
 

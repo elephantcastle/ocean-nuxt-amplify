@@ -3,7 +3,7 @@
     <v-progress-linear :value="progress" height="25" rounded color="light-blue">
       <strong>{{ Math.ceil(progress) }}%</strong>
     </v-progress-linear>
-    <div v-if="index < 100">
+    <div v-if="index < 120">
       <v-card class="question">
         {{ $t('questions')[index] }}
       </v-card>
@@ -30,6 +30,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { API } from 'aws-amplify'
 
 export default {
   name: 'test',
@@ -45,14 +46,14 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['updateAnswer', 'calculateResults', 'setId']),
+    ...mapMutations(['updateAnswer', 'setGraphData', 'setId']),
     setAnswer(value) {
-      if (this.index < 100) {
+      if (this.index < 120) {
         this.updateAnswer([this.index, value + 1])
         this.index++
-        if (this.index === 100) {
+        if (this.index === 120) {
           this.processing = true
-
+          this.calculateResults()
           const payload = {}
           payload['testdata'] = JSON.parse(JSON.stringify(this.results))
           payload['sex'] = this.sex
@@ -61,8 +62,8 @@ export default {
 
           API.post('oceanCalculations', `/ocean-calculations`, payload)
             .then((response) => {
-              this.setId(response.data)
-              this.calculateResults()
+              this.setId(response.data.id)
+              this.setGraphData(response.data.graphData)
               this.$router.push({ path: `/results` })
             })
             .catch((e) => {
