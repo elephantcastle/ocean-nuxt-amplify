@@ -1,11 +1,10 @@
 <template>
   <div class="middlealign enable-select">
-    <!-- <h1 class="subtitle-app">{{ $t("general-website").enteridtext }}</h1> -->
+    <h3 class="subtitle-app">{{ $t('general').enteridtext }}</h3>
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         v-model="id"
         :rules="idRules"
-        :counter="24"
         label="id"
         required
         outlined
@@ -17,26 +16,26 @@
 </template>
 
 <script>
-const ismongoId = (value) => /^[a-f\d]{24}$/i.test(value)
 import { API } from 'aws-amplify'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'retrieve',
   data: () => ({
     valid: true,
     id: null,
-    idRules: [
-      (v) => !!v || 'Id is required',
-      (v) => (v && ismongoId(v)) || 'It must be a valid mongo Id',
-    ],
+    idRules: [(v) => !!v || 'Id is required'],
   }),
 
   methods: {
+    ...mapMutations(['setGraphData', 'setId']),
     submit() {
       if (this.$refs.form.validate()) {
-        API.get('oceanCalculations', `/ocean-calculations`)
+        console.log(this.id)
+        API.get('oceanCalculations', `/ocean-calculations/object/${this.id}`)
           .then((response) => {
-            this.$store.dispatch('updateResults', response.data)
+            this.setId(response.id)
+            this.setGraphData(response.results)
             setTimeout(() => {
               this.$router.push({
                 path: `/results`,
