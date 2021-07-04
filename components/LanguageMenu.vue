@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="language-menu">
     <v-menu>
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon x-large v-bind="attrs" v-on="on">

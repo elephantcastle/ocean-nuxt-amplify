@@ -9,13 +9,14 @@
           transition="scale-transition"
           width="40"
         />
-        <div class="hidden-sm-and-down">{{ $t("general.title") }}</div>
+        <div class="hidden-sm-and-down">{{ $t('general.title') }}</div>
       </v-btn>
     </div>
 
     <v-spacer></v-spacer>
+    <ThemeSwitch />
     <v-btn class="hidden-sm-and-down" text to="/retrieve">
-      {{ $t("general.retrievereport") }}
+      {{ $t('general.retrievereport') }}
     </v-btn>
     <LanguageMenu />
     <NavigationMenu />
@@ -23,12 +24,20 @@
 </template>
 
 <script>
-import LanguageMenu from "@/components/LanguageMenu";
-import NavigationMenu from "@/components/NavigationMenu";
+import LanguageMenu from '@/components/LanguageMenu'
+import NavigationMenu from '@/components/NavigationMenu'
+import ThemeSwitch from '@/components/ThemeSwitch'
 export default {
   components: {
     LanguageMenu,
     NavigationMenu,
+    ThemeSwitch,
   },
-};
+}
 </script>
+
+<style >
+.navigation-menu {
+  margin-right: 10px;
+}
+</style>

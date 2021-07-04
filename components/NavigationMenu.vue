@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="navigation-menu">
     <v-menu offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon x-large v-bind="attrs" v-on="on">
@@ -23,11 +23,13 @@
 
 <script>
 export default {
-  name: "NavigationMenu",
+  name: 'NavigationMenu',
   computed: {
     availableRoutes() {
-      return this.$router.options.routes.filter((i) => i.name !== "results" &&  i.name !== this.$nuxt.$route.name);
+      return this.$router.options.routes.filter(
+        (i) => i.name !== 'results' && i.name !== this.$nuxt.$route.name
+      )
     },
-  }
-};
+  },
+}
 </script>

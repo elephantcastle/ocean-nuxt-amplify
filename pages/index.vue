@@ -32,6 +32,7 @@
           NEO-PI
         </li>
         <li>Translated: available in more languages</li>
+        <li>Quick: it takes just 10-20 minutes to answer 120 questions.</li>
       </ul>
     </v-row>
     <v-btn outlined text x-large elevation="2" class="button-style" to="/intro">
