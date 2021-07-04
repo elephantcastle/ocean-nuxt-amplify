@@ -39,6 +39,11 @@ export default {
       index: 0,
     }
   },
+  created() {
+    if (!this.sex || !this.age) {
+      this.$router.push('/')
+    }
+  },
   computed: {
     ...mapState(['sex', 'age', 'results']),
     progress() {
