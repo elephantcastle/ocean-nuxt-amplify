@@ -8,7 +8,7 @@ export default {
     about: 'Sur',
     policy: 'Intimité',
     enteridtext:
-      "Vous pouvez voir les résultats ici en tapant l'identifiant que vous avez obtenu,  (c'est-à-dire 5febaa2cc9b7b116872e0cf2) dans le champ de saisie ID",
+      "Vous pouvez voir les résultats ici en tapant l'identifiant que vous avez obtenu,  (c'est-à-dire 67696f278bc36d9e059b6af615446d0d) dans le champ de saisie ID",
   },
   answers: [
     'Fortement en désaccord',

@@ -8,7 +8,7 @@ export default {
     about: 'Acerca de',
     policy: 'Intimidad',
     enteridtext:
-      'Si puede ver los resultados aquí escribiendo la identificación que obtuvo (es decir 5febaa2cc9b7b116872e0cf2)',
+      'Si puede ver los resultados aquí escribiendo la identificación que obtuvo (es decir 67696f278bc36d9e059b6af615446d0d)',
   },
   answers: [
     'Muy Impreciso',

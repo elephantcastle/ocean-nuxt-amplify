@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .navigation-menu {
   margin-right: 10px;
 }

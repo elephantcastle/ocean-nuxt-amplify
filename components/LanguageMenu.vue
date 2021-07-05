@@ -41,3 +41,7 @@ export default {
   },
 }
 </script>
+<style lang="sass" scoped>
+.language-menu
+  margin: 0 5px
+</style>

@@ -19,29 +19,29 @@ export default {
   },
 }
 </script>
-<style>
-.theme-switcher-icon {
-  position: relative;
-  padding: 10px 12px;
-  cursor: pointer;
-  border-radius: 25px;
-  border: 1px solid transparent;
-}
-.theme-switcher-icon:hover {
-  background-color: rgb(248, 249, 250);
-  border: 1px solid #dadce0;
-}
-.theme-switcher-icon:hover .tooltip {
-  display: flex;
-}
-.tooltip {
-  display: none;
-  position: absolute;
-  padding: 0 0 0 3px;
-  background-color: lightgray;
-  width: 116px;
-  border-radius: 5px;
-  left: -80%;
-  top: 50px;
-}
+<style lang="sass" scoped>
+.theme-switcher-icon
+  margin: 0 5px
+  position: relative
+  padding: 10px 12px
+  cursor: pointer
+  border-radius: 25px
+  border: 1px solid transparent
+
+  &:hover
+    background-color: rgb(248, 249, 250)
+    border: 1px solid #dadce0
+
+  &:hover .tooltip
+    display: flex
+
+.tooltip
+  display: none
+  position: absolute
+  padding: 0 0 0 3px
+  background-color: lightgray
+  width: 116px
+  border-radius: 5px
+  left: -80%
+  top: 50px
 </style>

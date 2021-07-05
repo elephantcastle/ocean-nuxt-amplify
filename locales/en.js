@@ -8,7 +8,7 @@ export default {
     about: 'About',
     policy: 'Privacy Policy',
     enteridtext:
-      'Please enter your test id below to check your results (i.e. 5febaa2cc9b7b116872e0cf2)',
+      'Please enter your test id below to check your results (i.e. 67696f278bc36d9e059b6af615446d0d)',
   },
   answers: [
     'Very Inaccurate',

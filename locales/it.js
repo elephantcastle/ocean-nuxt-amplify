@@ -8,7 +8,7 @@ export default {
     about: 'About',
     policy: 'Trattamento dei dati',
     enteridtext:
-      "Immetti qui sotto l'id che hai ottenuto per vedere i risultati (per esempio 5febaa2cc9b7b116872e0cf2)",
+      "Immetti qui sotto l'id che hai ottenuto per vedere i risultati (per esempio 67696f278bc36d9e059b6af615446d0d)",
   },
   answers: [
     'Molto in disaccordo',

@@ -124,25 +124,25 @@ export default {
 }
 </script>
 
-<style>
-.title-chart {
-  margin: 0px auto;
-  text-align: center;
-}
-.primary-chart > div {
-  margin: 0 auto;
-}
-.secondary-chart {
-  margin: 0 auto;
-}
-.secondary-chart > div {
-  margin: 0 auto;
-}
-.id-text {
-  font-size: 18px;
-  margin: 0 auto;
-  user-select: text;
-}
+<style lang="sass" scoped>
+.title-chart
+  margin: 0px auto
+  text-align: center
+
+.primary-chart > div
+  margin: 0 auto
+
+.secondary-chart
+  margin: 0 auto
+
+
+  & > div
+    margin: 0 auto
+
+.id-text
+  font-size: 18px
+  margin: 0 auto
+  user-select: text
 </style>
 
 

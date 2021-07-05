@@ -8,7 +8,7 @@ export default {
     about: 'Über',
     policy: 'Datenschutz',
     enteridtext:
-      'Sie können die Ergebnisse durch das Eingeben Ihrer ID in das ID-Eingabefeld einsehen (z.B. 5febaa2cc9b7b116872e0cf2)',
+      'Sie können die Ergebnisse durch das Eingeben Ihrer ID in das ID-Eingabefeld einsehen (z.B. 67696f278bc36d9e059b6af615446d0d)',
   },
   answers: [
     'Sehr unzutreffend',
