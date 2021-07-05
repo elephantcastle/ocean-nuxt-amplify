@@ -56,10 +56,10 @@ export default {
       if (this.index < 120) {
         this.updateAnswer([this.index, value + 1])
         this.index++
-        if (this.index === 10) {
+        if (this.index === 120) {
           this.processing = true
           const payload = {}
-          payload['testdata'] = new Array(120).fill(1)
+          payload['testdata'] = JSON.parse(JSON.stringify(this.results))
           payload['sex'] = this.sex
           payload['age'] = this.age
           payload['language'] = this.$i18n.locale
