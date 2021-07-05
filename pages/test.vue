@@ -59,7 +59,6 @@ export default {
         if (this.index === 10) {
           this.processing = true
           const payload = {}
-          payload['id'] = '0'
           payload['testdata'] = new Array(120).fill(1)
           payload['sex'] = this.sex
           payload['age'] = this.age
@@ -71,7 +70,6 @@ export default {
             .then((response) => {
               this.setId(response.id)
               this.setGraphData(response.graphData)
-              console.log(response)
               this.$router.push({ path: `/results` })
             })
             .catch((e) => {

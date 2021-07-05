@@ -45,6 +45,7 @@ const path = '/ocean-calculations'
 const UNAUTH = 'UNAUTH'
 const hashKeyPath = '/:' + partitionKeyName
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : ''
+const crypto = require('crypto')
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
@@ -126,9 +127,16 @@ app.post(path, function (req, res) {
       req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH
   }
 
+  const id = crypto.randomBytes(16).toString('hex')
+  const timestamp = new Date().toString()
+
   let putItemParams = {
     TableName: tableName,
-    Item: req.body,
+    Item: {
+      id,
+      timestamp,
+      ...req.body,
+    },
   }
 
   dynamodb.put(putItemParams, (err, data) => {
@@ -141,7 +149,8 @@ app.post(path, function (req, res) {
         let putItemParamsResult = {
           TableName: tableNameResult,
           Item: {
-            id: '0',
+            id,
+            timestamp,
             results: results,
           },
         }
@@ -152,7 +161,7 @@ app.post(path, function (req, res) {
           } else {
             res.json({
               success: 'post call succeed!',
-              url: req.url,
+              id,
               graphData: results,
             })
           }

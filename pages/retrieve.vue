@@ -31,7 +31,6 @@ export default {
     ...mapMutations(['setGraphData', 'setId']),
     submit() {
       if (this.$refs.form.validate()) {
-        console.log(this.id)
         API.get('oceanCalculations', `/ocean-calculations/object/${this.id}`)
           .then((response) => {
             this.setId(response.id)
